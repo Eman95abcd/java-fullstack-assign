@@ -14,7 +14,7 @@ public class calcolaPerimetroArea
         double lato = input.nextDouble(); //creo una variabile di nome lato di tipo double che ha come valore il valore del metodo nextDouble dell'oggetto input
         double area = lato * lato; //creo una variabile area che ha come valore lato * lato
         double perimetro = lato * 4; //creo una variabile che ha come valore lato * 4
-        int soglia = 400;
+        int soglia = 500;
         if (lato > soglia || lato < 1)
         {
              System.out.print("il numero non e valido");
