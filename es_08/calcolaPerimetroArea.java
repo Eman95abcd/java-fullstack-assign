@@ -6,17 +6,15 @@ public class calcolaPerimetroArea // deve chiamarsi con il nome del file .java
     {
       Scanner input = new Scanner(System.in); //creo un oggetto Scanner chiamato input
       System.out.print("Inserisci la lughezza del lato: ");
-      int lato; //questo sarà il parametro che utilizzerò per i calcoli
+      int lato; 
       lato = input.nextInt(); 
       int area;
       int perimetro;
-      lato = 5; //assegno il valore 5 alla variabile lato
       area = lato * lato;
       perimetro = lato * 4;
-      System.out.println(lato); //stampa della variabile lato
-      System.out.println(area);
-      System.out.println(perimetro);
-      input.close(); // la chiusura è opzionale ma segna in giallo l'input finchè non lo mettiamo
-    }
+      System.out.println("Il lato inserito: " + lato); //concateno testo e variabili
+      System.out.println("L'area e': "+ area);
+      System.out.println("Il perimetro e': " + perimetro);
+      input.close(); 
     
 }
