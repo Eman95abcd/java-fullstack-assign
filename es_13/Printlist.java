@@ -9,14 +9,19 @@ public class Printlist
         fruits.add("Mela"); // il metodo add della classe aggiunge un elemento 
         fruits.add("Banana");
         fruits.add("Arancia");
-        fruits.clear();
+        fruits.clear(); // il metodo per pulire 
+        // fruits.remove(0); // il metodo per rimuovere un elemento specifico 
+        // fruits.size();
+        fruits.isEmpty();
         
 
         for (String fruit : fruits)
         {
-            System.out.print(fruit);
+            System.out.println(fruit);
+           //  System.out.println(fruits.size());
         }
-
+         System.out.println(fruits.isEmpty());
+       
     }
     
 }
