@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class IndovinaNumero {
+public class IndovinaNumero 
+{
     public static void main(String[] args)
     {
         List<Integer> lista_numeri = new ArrayList<Integer>();
@@ -18,30 +19,34 @@ public class IndovinaNumero {
         
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
+        boolean vincita = false;
+        int numDaIndovinare = rand.nextInt(100);
 
-   
-         System.out.print("\nInserisci un numero: ");
-            int numDaIndovinare = rand.nextInt(100);
-            int numInserito = input.nextInt();
-       
         
-        if (numInserito != numDaIndovinare)
+        while (vincita == false)
         {
-           
-            if (numInserito > numDaIndovinare)
+            System.out.print("\nInserisci un numero: ");
+            
+            int numInserito = input.nextInt();
+
+            if (numInserito == numDaIndovinare)
+            {
+                vincita = true;
+            }
+            else if (numInserito > numDaIndovinare)
             {
                 System.out.print("Numero troppo grande. Riprova.");
             }
             else if (numInserito < numDaIndovinare)
             {
-                System.out.print("numero troppo piccolo. Riprova"); 
-            }        
+                System.out.print("numero troppo piccolo. Riprova");
+            }
             
         }
-        else
-        {
-            System.out.print("Hai indovinato!");
-        }
+    
+
+              System.out.print("Hai indovinato!");
+    
        
         
 

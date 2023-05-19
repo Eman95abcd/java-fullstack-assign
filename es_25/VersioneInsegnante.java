@@ -1,23 +1,31 @@
 import java.util.Scanner;
+import java.util.Random;
 
-public class issid {
+public class VersioneInsegnante {
     public static void main(String[] args)
-    {
-        int numeroDaIndovinare = 11;
-        // int tentativi = 0;
+    {   
+        Random rand = new Random();
+        int numeroDaIndovinare = rand.nextInt(100) +1;
+        
+         int numeroDitentativi = 0;
         Scanner input = new Scanner(System.in);
         int tentativo;
         boolean vincita = false;
+
         while (vincita == false)
         {
             System.out.print("Inodvina un numero tra 1 e 100: ");
             tentativo = input.nextInt();
-            // tentativi ++;
-            if (tentativo == numeroDaIndovinare) {
+            numeroDitentativi ++;
+
+            if (tentativo == numeroDaIndovinare) 
+            {
                 vincita = true;
-            } else if (tentativo < numeroDaIndovinare) {
+            } else if (tentativo < numeroDaIndovinare) 
+            {
                 System.out.println("Troppo basso! Prova ancora!");
-            } else if (tentativo > numeroDaIndovinare) {
+            } else if (tentativo > numeroDaIndovinare) 
+            {
                 System.out.println("Troppo alto! Prova ancora!");
             }
         }
