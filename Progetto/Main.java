@@ -5,12 +5,18 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) 
+    {
+
+        Giocatore giocatore = new Giocatore();
+        Gioco gioco = new Gioco(giocatore);
+        gioco.gioca();
         
     }
+}
 
-    public class Giocatore {
+    class Giocatore 
+    {
 
         private String nome = "";
         private int punteggio = 0;
@@ -25,22 +31,23 @@ public class Main {
             this.nome = nuovoNome;
         }
 
-        public int punteggio()
+        public int getPunteggio()
         {
             return punteggio;
         }
 
         public void setPunteggio(int nuovoPunteggio)
         {
-            this.punteggio = nuovoPunteggio;
+            this.punteggio += nuovoPunteggio;
         }
     }
     
-    public class Gioco 
+    class Gioco
     {
         private Giocatore giocatore;
+        private Giocatore computer;
 
-        public Gioco(Giocatore giocatore) 
+        public Gioco(Giocatore giocatore)
         {
             this.giocatore = giocatore;
         }
@@ -55,8 +62,8 @@ public class Main {
             giocatore.setNome(nome);
             
             int contatore = 0;
-            int puntGioc = 0;
-            int puntComp = 0;
+            // int puntGioc = 0;
+            // int puntComp = 0;
             Map<Integer, String> tabellaConversione = new LinkedHashMap<Integer, String>();
             tabellaConversione.put(1, "Carta");
             tabellaConversione.put(2, "Sasso");
@@ -102,52 +109,37 @@ public class Main {
                 
                 System.out.println("La giocata del Computer e': " + giocataCompString);
     
+                // Definisci gli indici per le scelte (carta, sasso, forbice)
+                final int CARTA = 1;
+                final int SASSO = 2;
+                final int FORBICE = 3;
+
+                // Array per le opzioni disponibili
+                String[] opzioni = { "", "carta", "sasso", "forbice" };
+
+                // Determina il vincitore
                 if (giocata == giocataComp)
                 {
                     System.out.println("Pareggio");
-                    puntGioc += 1;
-                    puntComp += 1;
-                    contatore++;
+                    giocatore.setPunteggio(1);
+                    computer.setPunteggio(1);
                 }
-                else if (giocata == 1  && giocataComp == 2) 
+                else if ((giocata == CARTA && giocataComp == SASSO) ||
+                        (giocata == SASSO && giocataComp == FORBICE) ||
+                        (giocata == FORBICE && giocataComp == CARTA))
                 {
                     System.out.println(nome + " vince.");
-                    puntGioc += 2;
-                    contatore++;
-                } 
-                else if (giocata == 1 && giocataComp == 3) 
-                {
-                    System.out.println("Computer vince.");
-                    puntComp += 2;
-                    contatore++;
-                } 
-                else if (giocata == 2 && giocataComp == 1) 
-                {
-                    System.out.println("Computer vince.");
-                    puntComp += 2;
-                    contatore++;
-                } 
-                else if (giocata == 2 && giocataComp == 3) 
-                {
-                    System.out.println(nome + " vince.");
-                    puntGioc += 2;
-                    contatore++;
-                } 
-                else if (giocata == 3 && giocataComp == 1) 
-                {
-                    System.out.println(nome + " vince.");
-                    puntGioc += 2;
-                    contatore++;
-                } 
-                else if (giocata == 3 && giocataComp == 2)
-                {
-                    System.out.println("Computer vince.");
-                    puntComp += 2;
-                    contatore++;
+                    giocatore.setPunteggio(2);
                 }
+                else
+                {
+                    System.out.println("Computer vince.");
+                    computer.setPunteggio(2);
+                }
+                contatore++;
+
             }
-            System.out.println("Il punteggio finale e':\n" + "Computer: " + puntComp + "\n" + nome + ": " + puntGioc );
+            System.out.println("Il punteggio finale e':\n" + "Computer: " + computer.getPunteggio() + "\n" + nome + ": " + giocatore.getPunteggio() );
         }
     }
-}
 
