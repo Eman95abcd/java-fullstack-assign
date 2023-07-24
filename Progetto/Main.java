@@ -5,17 +5,16 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
 
-        Giocatore giocatore = new Giocatore();
-        Gioco gioco = new Gioco(giocatore);
+        Gioco gioco = new Gioco();
         gioco.gioca();
         
     }
 }
 
-    class Giocatore 
+    class Giocatore
     {
 
         private String nome = "";
@@ -44,13 +43,13 @@ public class Main {
     
     class Gioco
     {
-        private Giocatore giocatore;
+       /*  private Giocatore giocatore;
         private Giocatore computer;
 
         public Gioco(Giocatore giocatore)
         {
             this.giocatore = giocatore;
-        }
+        }    */
 
         public void gioca()
         {
@@ -140,9 +139,12 @@ public class Main {
                     comp.setPunteggio(2);
                 }
                 contatore++;
+                
 
             }
             System.out.println("Il punteggio finale e':\n" + "Computer: " + comp.getPunteggio() + "\n" + nome + ": " + gioc.getPunteggio() );
+            input.close();
         }
+        
     }
 
