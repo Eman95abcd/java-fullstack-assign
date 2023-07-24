@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -39,6 +41,21 @@ public class Main {
         {
             this.punteggio += nuovoPunteggio;
         }
+        
+        public void scriviPunteggioCSV()
+        {
+        try (FileWriter csvWriter = new FileWriter("punteggi.csv", true))
+        {
+            csvWriter.append(getNome())
+                    .append(",")
+                    .append(String.valueOf(getPunteggio()))
+                    .append("\n");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
     }
     
     class Gioco
@@ -144,6 +161,9 @@ public class Main {
             }
             System.out.println("Il punteggio finale e':\n" + "Computer: " + comp.getPunteggio() + "\n" + nome + ": " + gioc.getPunteggio() );
             input.close();
+
+        gioc.scriviPunteggioCSV();
+        comp.scriviPunteggioCSV();
         }
         
     }
