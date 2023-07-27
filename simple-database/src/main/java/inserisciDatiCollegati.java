@@ -6,6 +6,12 @@ import java.sql.Statement;
 public class inserisciDatiCollegati {
 
     public static void main(String[] args) {
+        if (args.length == 0)
+        {
+            System.out.println("Nome del database non fornito. Uso 'database_collegato' come nome di default.");
+            args = new String[]{"database_collegato"};
+        }
+
 
         Connection conn = null;
         try {
@@ -13,7 +19,8 @@ public class inserisciDatiCollegati {
             Class.forName("org.sqlite.JDBC");
 
             // Creo una connessione al database
-            String url = "jdbc:sqlite:database_collegato.db";
+         // String url = "jdbc:sqlite:database_collegato.db";
+            String url = "jdbc:sqlite:" + args[0] + ".db";
             conn = DriverManager.getConnection(url);
 
             System.out.println("Connessione a SQLite stabilita.");
@@ -42,7 +49,17 @@ public class inserisciDatiCollegati {
             Statement stmt5 = conn.createStatement();
             stmt5.execute(sql5);
 
-            System.out.println("I dati sono stati inseriti nelle tabelle 'categorie' e 'prodotti'.");
+         /* String sql6 = "DROP TABLE IF EXISTS 'database_collegato.regioni'";         //  <-- tentativo di togliere le tables 'regioni' e 'prodottiRegioni'
+
+            Statement stmt6 = conn.createStatement();
+            stmt6.executeUpdate(sql6);
+
+            String sql7 = "DROP TABLE IF EXISTS 'database_collegato.prodottiRegioni'";
+
+            Statement stmt7 = conn.createStatement();
+            stmt7.executeUpdate(sql7);
+
+            System.out.println("I dati sono stati inseriti nelle tabelle 'categorie' e 'prodotti'.");   */
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -3,14 +3,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreaDBCollegato {
+public class CreaDBCollegato2 {
 
     public static void main(String[] args) {
-        if (args.length == 0)
-        {
-            System.out.println("Nome del database non fornito. Uso 'database_collegato' come nome di default.");
-            args = new String[]{"database_collegato"};
-        }
 
         Connection conn = null;
         try {
@@ -18,23 +13,21 @@ public class CreaDBCollegato {
             Class.forName("org.sqlite.JDBC");
 
             // Creo una connessione al database
-            String url = "jdbc:sqlite:" + args[0] + ".db";
-        //  String url = "jdbc:sqlite:database_collegato.db";
+            String url = "jdbc:sqlite:database_collegato2.db";
             conn = DriverManager.getConnection(url);
 
             System.out.println("Connessione a SQLite stabilita.");
 
             // Creo la tabella 'categoria'
-            String sql1 = "CREATE TABLE IF NOT EXISTS categorie (\n"
+            String sql1 = "CREATE TABLE IF NOT EXISTS regioni (\n"
                     + " id integer PRIMARY KEY,\n"
                     + " nome text NOT NULL\n"
                     + ");";
 
             // Creo la tabella 'prodotti' con una chiave esterna che si riferisce alla tabella 'categorie'
-            String sql2 = "CREATE TABLE IF NOT EXISTS prodotti (\n"
+            String sql2 = "CREATE TABLE IF NOT EXISTS prodottiRegioni (\n"
                     + " id integer PRIMARY KEY,\n"
                     + " nome text NOT NULL,\n"
-                    + " quantita integer NOT NULL,\n"
                     + " prezzo real NOT NULL,\n"
                     + " id_categoria integer,\n"
                     + " FOREIGN KEY(id_categoria) REFERENCES categorie(id)\n"
