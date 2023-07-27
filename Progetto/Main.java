@@ -44,18 +44,18 @@ public class Main {
         
         public void scriviPunteggioCSV()
         {
-        try (FileWriter csvWriter = new FileWriter("punteggi.csv", true))
-        {
-            csvWriter.append(getNome())
-                    .append(",")
-                    .append(String.valueOf(getPunteggio()))
-                    .append("\n");
+            try (FileWriter csvWriter = new FileWriter("punteggi.csv", true))
+            {
+                csvWriter.append(getNome())
+                        .append(",")
+                        .append(String.valueOf(getPunteggio()))
+                        .append("\n");
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
     }
     
     class Gioco
